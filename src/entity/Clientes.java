@@ -9,7 +9,7 @@ package entity;
  *
  * @author amlazo
  */
-public class Cliente {
+public class Clientes {
     int idCliente;
     String rut;
     String dv;
@@ -27,10 +27,10 @@ public class Cliente {
     String usuario;
     String idGenero;
     
-    public Cliente() {
+    public Clientes() {
     }
 
-    public Cliente(int idCliente, String rut, String dv, String nombre, String apPat, String apMat, String calle, String numero, String dpto, String block, String telefono, String celular, String mail, String idComuna, String usuario, String idGenero) {
+    public Clientes(int idCliente, String rut, String dv, String nombre, String apPat, String apMat, String calle, String numero, String dpto, String block, String telefono, String celular, String mail, String idComuna, String usuario, String idGenero) {
         this.idCliente = idCliente;
         this.rut = rut;
         this.dv = dv;
