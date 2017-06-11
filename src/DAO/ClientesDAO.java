@@ -13,7 +13,7 @@ import java.util.ArrayList;
  *
  * @author amlazo
  */
-public class ClienteDAO {
+public class ClientesDAO {
     public static boolean Insertar(Clientes cliente)
         {
             //podria haber problemas con el null

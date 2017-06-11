@@ -5,7 +5,7 @@
  */
 package DAO;
 
-import entity.Clientes;
+import entity.TipoPago;
 import generales.BD;
 import java.util.ArrayList;
 
@@ -14,30 +14,30 @@ import java.util.ArrayList;
  * @author amlazo
  */
 public class TipoPagoDAO {
-    public static boolean Insertar(Clientes cliente)
+    public static boolean Insertar(TipoPago tipoPago)
         {
+            boolean sql = BD.sqlQuery("INSERT INTO `test`.`tipopago` (`idtpago`, `descripcion`) VALUES ('"+tipoPago.getIdPago()+"', '"+tipoPago.getDescripcion()+"');");
             //podria haber problemas con el null
-            boolean sql = BD.sqlQuery("INSERT INTO 'clientes' ('idcliente', 'rut', 'dv', 'nombre', 'appat', 'apmat', 'calle', 'numero', 'dpto', 'block', 'telefono', 'celular', 'mail', 'comuna_idcomuna', 'usuario_usuario', 'genero_idgenero') VALUES ('"+cliente.getIdCliente()+"', '"+cliente.getRut()+"', '"+cliente.getDv()+"', '"+cliente.getNombre()+"', '"+cliente.getApPat()+"', '"+cliente.getApMat()+"', '"+cliente.getCalle()+"', '"+cliente.getNumero()+"', '"+cliente.getDpto()+"', '"+cliente.getBlock()+"', '"+cliente.getTelefono()+"', '"+cliente.getCelular()+"', '"+cliente.getMail()+"', '"+cliente.getIdComuna()+"', '"+cliente.getUsuario()+"', '"+cliente.getIdGenero()+"');");
             return sql;
         }
 
-        public static boolean Actualizar(int idCliente, Clientes cliente)
+        public static boolean Actualizar(int idTipoPago, TipoPago tipoPago)
         {
-            boolean sql = BD.sqlQuery("UPDATE `clientes` SET `idcliente`='"+cliente.getIdCliente()+"', `rut`='"+cliente.getRut()+"', `dv`='"+cliente.getDv()+"', `nombre`='"+cliente.getNombre()+"', `appat`='"+cliente.getApPat()+"', `apmat`='"+cliente.getApMat()+"', `calle`='"+cliente.getCalle()+"', `numero`='"+cliente.getNumero()+"', `dpto`='"+cliente.getDpto()+"', `block`='"+cliente.getBlock()+"', `telefono`='"+cliente.getTelefono()+"', `celular`='"+cliente.getCelular()+"', `mail`='"+cliente.getMail()+"', `comuna_idcomuna`='"+cliente.getIdComuna()+"', `usuario_usuario`='"+cliente.getUsuario()+"', `genero_idgenero`='"+cliente.getIdGenero()+"' WHERE `idcliente`='"+idCliente+"';");
+            boolean sql = BD.sqlQuery("UPDATE `test`.`tipopago` SET `descripcion`='"+tipoPago.getDescripcion()+"' WHERE `idtpago`='"+idTipoPago+"';");
             return sql;
         }
 
-        public static boolean Elimimar(int idCliente)
+        public static boolean Elimimar(int idTipoPago)
         {
-            boolean sql = BD.sqlQuery("DELETE FROM 'clientes' WHERE 'idcliente'='"+idCliente+"';");
+            boolean sql = BD.sqlQuery("DELETE FROM `test`.`tipopago` WHERE `idtpago`='"+idTipoPago+"';");
             return sql;
         }
 
 
-        public static ArrayList Leer(int idCliente)
+        public static ArrayList Leer(int idTipoPago)
         {
             ArrayList<String> lista;
-            lista=BD.sqlSelect(idCliente,"clientes");
+            lista=BD.sqlSelect(idTipoPago,"tipoPago");
             //For para la lista
             return lista;
         }
@@ -46,7 +46,7 @@ public class TipoPagoDAO {
         {
             //DataTable dt = BD.getInstance().sqlSelect("Select * from cargo");
             ArrayList<String> lista;
-            lista=BD.sqlSelectAll("clientes");
+            lista=BD.sqlSelectAll("tipoPago");
             return lista;
             
         }

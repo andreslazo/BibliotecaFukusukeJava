@@ -10,25 +10,25 @@ package entity;
  * @author amlazo
  */
 public class Descuentos {
-    int descuentos;
+    int idDescuentos;
     String descripcion;
     int porcentajedesc;
 
     public Descuentos() {
     }
 
-    public Descuentos(int descuentos, String descripcion, int porcentajedesc) {
-        this.descuentos = descuentos;
+    public Descuentos(int idDescuentos, String descripcion, int porcentajedesc) {
+        this.idDescuentos = idDescuentos;
         this.descripcion = descripcion;
         this.porcentajedesc = porcentajedesc;
     }
 
-    public int getDescuentos() {
-        return descuentos;
+    public int getIdDescuentos() {
+        return idDescuentos;
     }
 
-    public void setDescuentos(int descuentos) {
-        this.descuentos = descuentos;
+    public void setIdDescuentos(int idDescuentos) {
+        this.idDescuentos = idDescuentos;
     }
 
     public String getDescripcion() {
