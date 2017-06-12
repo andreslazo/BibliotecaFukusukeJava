@@ -34,10 +34,10 @@ public class ClientesDAO {
         }
 
 
-        public static JSONArray Leer(int idCliente)
+        public static JSONArray Leer(String user)
         {
             JSONArray lista;
-            lista=BD.sqlSelect(idCliente,"clientes","idcliente");
+            lista=BD.sqlSelectString(user,"clientes","usuario_usuario");
             //For para la lista
             return lista;
         }
@@ -49,5 +49,9 @@ public class ClientesDAO {
             lista=BD.sqlSelectAll("clientes");
             return lista;
             
+        }
+        
+        public static int ObtenerId(String user){
+            return BD.sqlSelectOneIntPrimo(user, "clientes", "usuario_usuario", "idcliente");
         }
 }

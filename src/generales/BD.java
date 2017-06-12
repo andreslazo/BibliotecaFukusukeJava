@@ -118,7 +118,7 @@ public class BD {
                     //txtResultados.setText("error"+e.toString());
                     JSONArray json = new JSONArray();
                     JSONObject obj = new JSONObject();
-                    obj.put("error", "No se encontraron parametros con este id");
+                    obj.put("error", e);
                     json.put(obj);    
                     return json;
                 }
@@ -160,10 +160,63 @@ public class BD {
                     //txtResultados.setText("error"+e.toString());
                     JSONArray json = new JSONArray();
                     JSONObject obj = new JSONObject();
-                    obj.put("error", "No se encontraron parametros con este id");
+                    obj.put("error", e);
                     json.put(obj);    
                     return json;
                 }
         
+        
+        
     }
+    
+    public static int sqlSelectOneInt(int id,String tabla,String nombreIdentificador,String objetoBuscado) {
+        try{
+                    Class.forName("com.mysql.jdbc.Driver").newInstance();
+                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","c+90017172");
+
+                    Statement statement = connection.createStatement();
+                    String consultaSQL = "select "+objetoBuscado+" from "+tabla+" where "+nombreIdentificador+"='"+id+"';";
+                    ResultSet results = statement.executeQuery(consultaSQL);
+                    
+                    int resultado=0;
+                    while (results.next())
+                    {
+                        resultado=results.getInt(objetoBuscado);
+                    }
+
+                    connection.close();
+                    
+                    return resultado;
+                }catch (Exception e){
+                    return 0;
+                }
+        
+          
+    }
+    
+     public static int sqlSelectOneIntPrimo(String id,String tabla,String nombreIdentificador,String objetoBuscado) {
+        try{
+                    Class.forName("com.mysql.jdbc.Driver").newInstance();
+                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","c+90017172");
+
+                    Statement statement = connection.createStatement();
+                    String consultaSQL = "select "+objetoBuscado+" from "+tabla+" where "+nombreIdentificador+"='"+id+"';";
+                    ResultSet results = statement.executeQuery(consultaSQL);
+                    
+                    int resultado=0;
+                    while (results.next())
+                    {
+                        resultado=results.getInt(objetoBuscado);
+                    }
+
+                    connection.close();
+                    
+                    return resultado;
+                }catch (Exception e){
+                    return 0;
+                }
+        
+          
+    }
+      
 }

@@ -50,4 +50,12 @@ public class PromocionesDAO {
             return lista;
             
         }
+        
+        public static int ObtenerPrecio(int idPromociones){
+            return BD.sqlSelectOneInt(idPromociones, "promociones", "idpromo", "precio");
+        }
+        
+        public static int ObtenerSucursal(int idPromociones){
+            return BD.sqlSelectOneInt(idPromociones, "promociones", "idpromo", "sucursal_idsucursal");
+        }
 }
