@@ -7,7 +7,7 @@ package DAO;
 
 import entity.Genero;
 import generales.BD;
-import java.util.ArrayList;
+import org.json.JSONArray;
 
 /**
  *
@@ -34,18 +34,18 @@ public class GeneroDAO {
         }
 
 
-        public static ArrayList Leer(int idGenero)
+        public static JSONArray Leer(int idGenero)
         {
-            ArrayList<String> lista;
+            JSONArray lista;
             lista=BD.sqlSelect(idGenero,"genero");
             //For para la lista
             return lista;
         }
 
-        public static ArrayList LeerTodo()
+        public static JSONArray LeerTodo()
         {
             //DataTable dt = BD.getInstance().sqlSelect("Select * from cargo");
-            ArrayList<String> lista;
+            JSONArray lista;
             lista=BD.sqlSelectAll("genero");
             return lista;
             

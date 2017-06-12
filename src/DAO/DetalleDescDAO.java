@@ -7,7 +7,7 @@ package DAO;
 
 import entity.DetalleDesc;
 import generales.BD;
-import java.util.ArrayList;
+import org.json.JSONArray;
 
 /**
  *
@@ -34,18 +34,18 @@ public class DetalleDescDAO {
         }
 
 
-        public static ArrayList Leer(int idDetalleDesc)
+        public static JSONArray Leer(int idDetalleDesc)
         {
-            ArrayList<String> lista;
+            JSONArray lista;
             lista=BD.sqlSelect(idDetalleDesc,"detalleDesc");
             //For para la lista
             return lista;
         }
 
-        public static ArrayList LeerTodo()
+        public static JSONArray LeerTodo()
         {
             //DataTable dt = BD.getInstance().sqlSelect("Select * from cargo");
-            ArrayList<String> lista;
+            JSONArray lista;
             lista=BD.sqlSelectAll("detalleDesc");
             return lista;
             

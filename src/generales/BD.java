@@ -9,8 +9,12 @@ package generales;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.Statement;
-import java.util.ArrayList;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONException;
 
 /**
  *
@@ -27,6 +31,7 @@ public class BD {
                 
                 String query=sql;
                 
+                
                 statement.executeUpdate(query);
                 
                 connection.close();
@@ -37,7 +42,7 @@ public class BD {
             }
     }
     
-    public static ArrayList<String> sqlSelectAll(String tabla) {
+    public static JSONArray sqlSelectAll(String tabla) {
         try{
                     Class.forName("com.mysql.jdbc.Driver").newInstance();
                     Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","c+90017172");
@@ -46,18 +51,29 @@ public class BD {
                     String consultaSQL = "SELECT * FROM "+tabla+";";
                     ResultSet results = statement.executeQuery(consultaSQL);
                     
-                    ArrayList<String> arrayResultados=new ArrayList<String>();
+                    //ArrayList<String> arrayResultados=new ArrayList<String>();
 
                     //txtResultados.setText(); Convertir resultset en array
                     
+                    JSONArray json = new JSONArray();
+                    ResultSetMetaData rsmd = results.getMetaData();
+                    
                     while (results.next())
                     {
-                        
+                        int numColumns = rsmd.getColumnCount();
+                        JSONObject obj = new JSONObject();
+                        for (int i=1; i<=numColumns; i++) {
+                          String column_name = rsmd.getColumnName(i);
+                          obj.put(column_name, results.getObject(column_name));
+                        }
+                        json.put(obj);
                         //Como recibir multiples columnas
                     }
 
                     connection.close();
                     
+                    return json;
+                }catch (JSONException e){
                     return null;
                 }catch (Exception e){
                     //txtResultados.setText("error"+e.toString());
@@ -66,7 +82,7 @@ public class BD {
         
     }
     
-    public static ArrayList<String> sqlSelect(int id,String tabla) {
+    public static JSONArray sqlSelect(int id,String tabla) {
         try{
                     Class.forName("com.mysql.jdbc.Driver").newInstance();
                     Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","c+90017172");
@@ -75,7 +91,10 @@ public class BD {
                     String consultaSQL = "SELECT * FROM "+tabla+";";
                     ResultSet results = statement.executeQuery(consultaSQL);
                     
-                    ArrayList<String> arrayResultados=new ArrayList<String>();
+                    //ArrayList<String> arrayResultados=new ArrayList<String>();
+                    
+                    JSONArray json = new JSONArray();
+                    ResultSetMetaData rsmd = results.getMetaData();
 
                     //txtResultados.setText(); Convertir resultset en array
                     
