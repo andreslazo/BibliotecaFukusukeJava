@@ -88,7 +88,8 @@ public class BD {
                     Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","c+90017172");
 
                     Statement statement = connection.createStatement();
-                    String consultaSQL = "SELECT * FROM "+tabla+" WHERE `"+nombreIdentificador+"` =`"+id+"`;";
+                    String consultaSQL = "select * from "+tabla+" where "+nombreIdentificador+"='"+id+"';";
+                    //String consultaSQL = "SET @"+nombreIdentificador+"_to_select = 1; SELECT "+tabla+".* FROM "+tabla+" WHERE genero.idgenero = @idgenero_to_select;";
                     ResultSet results = statement.executeQuery(consultaSQL);
                     
                     //ArrayList<String> arrayResultados=new ArrayList<String>();
@@ -115,7 +116,11 @@ public class BD {
                     return json;
                 }catch (Exception e){
                     //txtResultados.setText("error"+e.toString());
-                    return null;
+                    JSONArray json = new JSONArray();
+                    JSONObject obj = new JSONObject();
+                    obj.put("error", "No se encontraron parametros con este id");
+                    json.put(obj);    
+                    return json;
                 }
         
     }
@@ -126,7 +131,7 @@ public class BD {
                     Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","c+90017172");
 
                     Statement statement = connection.createStatement();
-                    String consultaSQL = "SELECT * FROM "+tabla+" WHERE` "+nombreIdentificador+"` =`"+id+"`;";
+                    String consultaSQL = "select * from "+tabla+" where "+nombreIdentificador+"='"+id+"';";
                     ResultSet results = statement.executeQuery(consultaSQL);
                     
                     //ArrayList<String> arrayResultados=new ArrayList<String>();
@@ -153,7 +158,11 @@ public class BD {
                     return json;
                 }catch (Exception e){
                     //txtResultados.setText("error"+e.toString());
-                    return null;
+                    JSONArray json = new JSONArray();
+                    JSONObject obj = new JSONObject();
+                    obj.put("error", "No se encontraron parametros con este id");
+                    json.put(obj);    
+                    return json;
                 }
         
     }
