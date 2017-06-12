@@ -37,7 +37,7 @@ public class HorarioAtencDAO {
         public static JSONArray Leer(int idHorarioAtenc)
         {
             JSONArray lista;
-            lista=BD.sqlSelect(idHorarioAtenc,"horarioAtenc");
+            lista=BD.sqlSelect(idHorarioAtenc,"cargo","idcargo");
             //For para la lista
             return lista;
         }

@@ -37,7 +37,7 @@ public class RegionDAO {
         public static JSONArray Leer(int idRegion)
         {
             JSONArray lista;
-            lista=BD.sqlSelect(idRegion,"region");
+            lista=BD.sqlSelect(idRegion,"region","idregion");
             //For para la lista
             return lista;
         }

@@ -37,7 +37,7 @@ public class DetalleDescDAO {
         public static JSONArray Leer(int idDetalleDesc)
         {
             JSONArray lista;
-            lista=BD.sqlSelect(idDetalleDesc,"detalleDesc");
+            lista=BD.sqlSelect(idDetalleDesc,"detalledesc","idddesc");
             //For para la lista
             return lista;
         }

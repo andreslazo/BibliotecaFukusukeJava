@@ -37,7 +37,7 @@ public class UsuarioDAO {
         public static JSONArray Leer(int idUsuario)
         {
             JSONArray lista;
-            lista=BD.sqlSelect(idUsuario,"usuario");
+            lista=BD.sqlSelect(idUsuario,"usuario","usuario");
             //For para la lista
             return lista;
         }

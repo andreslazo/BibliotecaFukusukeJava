@@ -37,7 +37,7 @@ public class CatIngredDAO {
         public static JSONArray Leer(int idCatIngred)
         {
             JSONArray lista;
-            lista=BD.sqlSelect(idCatIngred,"catingred");
+            lista=BD.sqlSelect(idCatIngred,"catingred","idcatingred");
             //For para la lista
             return lista;
         }

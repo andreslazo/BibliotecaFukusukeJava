@@ -37,7 +37,7 @@ public class CargoDAO {
         public static JSONArray Leer(int idCargo)
         {
             JSONArray lista;
-            lista=BD.sqlSelect(idCargo,"cargo");
+            lista=BD.sqlSelect(idCargo,"cargo","idcargo");
             //For para la lista
             return lista;
         }

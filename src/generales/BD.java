@@ -82,13 +82,13 @@ public class BD {
         
     }
     
-    public static JSONArray sqlSelect(int id,String tabla) {
+    public static JSONArray sqlSelect(int id,String tabla,String nombreIdentificador) {
         try{
                     Class.forName("com.mysql.jdbc.Driver").newInstance();
                     Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","c+90017172");
 
                     Statement statement = connection.createStatement();
-                    String consultaSQL = "SELECT * FROM "+tabla+";";
+                    String consultaSQL = "SELECT * FROM "+tabla+" WHERE `"+nombreIdentificador+"` =`"+id+"`;";
                     ResultSet results = statement.executeQuery(consultaSQL);
                     
                     //ArrayList<String> arrayResultados=new ArrayList<String>();
@@ -100,13 +100,57 @@ public class BD {
                     
                     while (results.next())
                     {
-                        
+                        int numColumns = rsmd.getColumnCount();
+                        JSONObject obj = new JSONObject();
+                        for (int i=1; i<=numColumns; i++) {
+                          String column_name = rsmd.getColumnName(i);
+                          obj.put(column_name, results.getObject(column_name));
+                        }
+                        json.put(obj);
                         //Como recibir multiples columnas
                     }
 
                     connection.close();
                     
+                    return json;
+                }catch (Exception e){
+                    //txtResultados.setText("error"+e.toString());
                     return null;
+                }
+        
+    }
+    
+    public static JSONArray sqlSelectString(String id,String tabla,String nombreIdentificador) {
+        try{
+                    Class.forName("com.mysql.jdbc.Driver").newInstance();
+                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","c+90017172");
+
+                    Statement statement = connection.createStatement();
+                    String consultaSQL = "SELECT * FROM "+tabla+" WHERE` "+nombreIdentificador+"` =`"+id+"`;";
+                    ResultSet results = statement.executeQuery(consultaSQL);
+                    
+                    //ArrayList<String> arrayResultados=new ArrayList<String>();
+                    
+                    JSONArray json = new JSONArray();
+                    ResultSetMetaData rsmd = results.getMetaData();
+
+                    //txtResultados.setText(); Convertir resultset en array
+                    
+                    while (results.next())
+                    {
+                        int numColumns = rsmd.getColumnCount();
+                        JSONObject obj = new JSONObject();
+                        for (int i=1; i<=numColumns; i++) {
+                          String column_name = rsmd.getColumnName(i);
+                          obj.put(column_name, results.getObject(column_name));
+                        }
+                        json.put(obj);
+                        //Como recibir multiples columnas
+                    }
+
+                    connection.close();
+                    
+                    return json;
                 }catch (Exception e){
                     //txtResultados.setText("error"+e.toString());
                     return null;

@@ -37,7 +37,7 @@ public class GeneroDAO {
         public static JSONArray Leer(int idGenero)
         {
             JSONArray lista;
-            lista=BD.sqlSelect(idGenero,"genero");
+            lista=BD.sqlSelect(idGenero,"genero","idgenero");
             //For para la lista
             return lista;
         }

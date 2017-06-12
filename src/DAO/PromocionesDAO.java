@@ -37,7 +37,7 @@ public class PromocionesDAO {
         public static JSONArray Leer(int idPromociones)
         {
             JSONArray lista;
-            lista=BD.sqlSelect(idPromociones,"promociones");
+            lista=BD.sqlSelect(idPromociones,"promociones","idpromo");
             //For para la lista
             return lista;
         }
