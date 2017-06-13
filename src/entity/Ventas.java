@@ -19,6 +19,7 @@ public class Ventas {
     int precioDesc;
     Date fecha;
     Date hora;
+    int estado;
     int idTPago;
     int idSucursal;
     int idCliente;
@@ -26,7 +27,7 @@ public class Ventas {
     public Ventas() {
     }
 
-    public Ventas(int idVenta, int numeroBoleta, int precio, int descuentoTotal, int precioDesc, Date fecha, Date hora, int idTPago, int idSucursal, int idCliente) {
+    public Ventas(int idVenta, int numeroBoleta, int precio, int descuentoTotal, int precioDesc, Date fecha, Date hora, int estado, int idTPago, int idSucursal, int idCliente) {
         this.idVenta = idVenta;
         this.numeroBoleta = numeroBoleta;
         this.precio = precio;
@@ -34,10 +35,13 @@ public class Ventas {
         this.precioDesc = precioDesc;
         this.fecha = fecha;
         this.hora = hora;
+        this.estado = estado;
         this.idTPago = idTPago;
         this.idSucursal = idSucursal;
         this.idCliente = idCliente;
     }
+    
+    
 
     public int getIdVenta() {
         return idVenta;
@@ -94,6 +98,16 @@ public class Ventas {
     public void setHora(Date hora) {
         this.hora = hora;
     }
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+    
+    
 
     public int getIdTPago() {
         return idTPago;
