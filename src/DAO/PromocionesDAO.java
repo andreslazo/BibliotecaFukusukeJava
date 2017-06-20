@@ -58,4 +58,8 @@ public class PromocionesDAO {
         public static int ObtenerSucursal(int idPromociones){
             return BD.sqlSelectOneInt(idPromociones, "promociones", "idpromo", "sucursal_idsucursal");
         }
+        
+        public static int obtenerID(String descripcion){
+            return BD.sqlSelectOneIntPrimo(descripcion, "promociones", "descripcion", "idpromo");
+        }
 }

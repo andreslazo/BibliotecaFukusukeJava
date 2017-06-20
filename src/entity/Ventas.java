@@ -12,7 +12,6 @@ import java.util.Date;
  * @author amlazo
  */
 public class Ventas {
-    int idVenta;
     int numeroBoleta;
     int precio;
     int descuentoTotal;
@@ -27,8 +26,8 @@ public class Ventas {
     public Ventas() {
     }
 
-    public Ventas(int idVenta, int numeroBoleta, int precio, int descuentoTotal, int precioDesc, Date fecha, Date hora, int estado, int idTPago, int idSucursal, int idCliente) {
-        this.idVenta = idVenta;
+    public Ventas(int numeroBoleta, int precio, int descuentoTotal, int precioDesc, Date fecha, Date hora, int estado, int idTPago, int idSucursal, int idCliente) {
+        
         this.numeroBoleta = numeroBoleta;
         this.precio = precio;
         this.descuentoTotal = descuentoTotal;
@@ -41,16 +40,6 @@ public class Ventas {
         this.idCliente = idCliente;
     }
     
-    
-
-    public int getIdVenta() {
-        return idVenta;
-    }
-
-    public void setIdVenta(int idVenta) {
-        this.idVenta = idVenta;
-    }
-
     public int getNumeroBoleta() {
         return numeroBoleta;
     }

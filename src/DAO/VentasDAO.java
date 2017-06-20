@@ -16,7 +16,7 @@ import org.json.JSONArray;
 public class VentasDAO {
     public static boolean Insertar(Ventas ventas)
         {
-            boolean sql = BD.sqlQuery("INSERT INTO `test`.`ventas` (`idventa`, `numeroboleta`, `precio`, `descuentototal`, `preciodesc`, `fecha`, `hora`, `estado`, `tipopago_idtpago`, `sucursal_idsucursal`, `clientes_idcliente`) VALUES ('"+ventas.getIdVenta()+"', '"+ventas.getNumeroBoleta()+"', '"+ventas.getPrecio()+"', '"+ventas.getDescuentoTotal()+"', '"+ventas.getPrecioDesc()+"', '"+ventas.getFecha()+"', '"+ventas.getHora()+"',, `"+ventas.getEstado()+"` '"+ventas.getIdTPago()+"', '"+ventas.getIdSucursal()+"', '"+ventas.getIdCliente()+"');");
+            boolean sql = BD.sqlQuery("INSERT INTO `test`.`ventas` (`numeroboleta`, `precio`, `descuentototal`, `preciodesc`, `fecha`, `hora`, `estado`, `tipopago_idtpago`, `sucursal_idsucursal`, `clientes_idcliente`) VALUES ('"+ventas.getNumeroBoleta()+"', '"+ventas.getPrecio()+"', '"+ventas.getDescuentoTotal()+"', '"+ventas.getPrecioDesc()+"', '"+ventas.getFecha()+"', '"+ventas.getHora()+"',, `"+ventas.getEstado()+"` '"+ventas.getIdTPago()+"', '"+ventas.getIdSucursal()+"', '"+ventas.getIdCliente()+"');");
             //podria haber problemas con el null
             return sql;
         }
